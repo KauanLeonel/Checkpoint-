@@ -13,3 +13,55 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+enum Role{
+  USER
+  ADMIN
+}
+
+model User{
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId //especifico para o mongodb
+  email   String   @unique
+  name    String
+  role    Role     @default(USER)
+  password String //vamos usar a biblioteca bcrypt para que ao receber a senha criptografe com "hashedPassword"bcrypt.compare()
+}
+model Client {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String @db.ObjectId
+  cpf     String @unique
+}
+model Company {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  cnpj     String  @unique
+}
+model Products {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  name    String
+  photo   String
+  description   String
+  price   Float
+  category_game  String
+  platform    String
+  quant_stock Int
+}
+
+model Request{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  quant_request Int
+}
+
+model Kart{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  product_id String  @db.ObjectId
+}
+
+model Feedback{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  comment String
+  stars_avaliation Int 
+}
