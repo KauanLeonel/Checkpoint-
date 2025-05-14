@@ -33,7 +33,7 @@ model Client {
 model Company {
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
   user_id String  @db.ObjectId
-  cnpj     String  @unique
+  cnpj    Int  @unique
 }
 model Products {
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
