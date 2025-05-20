@@ -1,4 +1,5 @@
 import { create, userValidator } from "../../models/userModel.js";
+
 export default async function createUserController(req, res) {
 
     const user = req.body;
@@ -15,8 +16,6 @@ export default async function createUserController(req, res) {
     }
 
     const result = await create(userValited)
-
-
     return res.json({
         message: "imóvel criado com sucesso",
         user: result

@@ -35,3 +35,42 @@ const userSchema = z.object({
         .url({message: "Url do avatar inválida."})
         .optional()
 })
+
+
+export const userValidator = (user, partial = null) => {
+    if(partial){
+        return propertySchema.partial(partial).safeParse(user)
+    }
+    return propertySchema.safeParse(user)
+}
+
+export async function create(user){
+    const result = await prisma.puserlaskjdf.create({
+        data: user
+    })
+    return result
+}
+
+export async function remove(id){
+    const result = await prisma.user.delete({
+        where: {
+            id
+        }
+    })
+    return result
+}
+
+export async function getList(){
+    const result = await prisma.user.findMany()
+    return result
+}
+
+export async function update(id, user){
+    const result = await prisma.user.update({
+        where: {
+            id
+        },
+        data: user
+    })
+    return result
+}
