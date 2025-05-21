@@ -8,3 +8,5 @@ router.get('/table', tableFeedbackController)
 router.get('/create', createFeedbackController)
 router.get('/edit/:id', editFeedbackController)
 router.get('/delete/:id', deleteFeedbackController)
+
+export default router
