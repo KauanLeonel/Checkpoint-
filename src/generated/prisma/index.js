@@ -171,7 +171,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Kauan\\Documents\\Códigos\\Checkpoint\\Checkpoint-\\src\\generated\\prisma",
+      "value": "C:\\Users\\User\\Downloads\\Checkpoint-compact\\Checkpoint-\\Checkpoint-\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -185,7 +185,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Kauan\\Documents\\Códigos\\Checkpoint\\Checkpoint-\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\User\\Downloads\\Checkpoint-compact\\Checkpoint-\\Checkpoint-\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

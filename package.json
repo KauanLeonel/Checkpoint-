@@ -1,7 +1,7 @@
 {
   "name": "checkpoint-",
   "version": "1.0.0",
-   "type": "module",
+  "type": "module",
   "description": "BackEnd do website Checkpoint: Um eccomerce de jogos",
   "main": "index.js",
   "scripts": {

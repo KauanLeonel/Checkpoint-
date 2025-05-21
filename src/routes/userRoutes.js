@@ -9,7 +9,7 @@ const router = express.Router()
 
 
 router.get('/table', getUserController)
-router.post('/create', createUserController)
+router.post('/', createUserController)
 router.patch('/edit/:id', changeUserController)
 router.delete('/delete/:id', deleteUserController)
 router.put('/:id', uptadeUserController)
