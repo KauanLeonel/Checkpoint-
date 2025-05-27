@@ -22,7 +22,7 @@ const userSchema = z.object({
         required_error: "A role é obrigatória."
     }),
 
-    pass: z.string({
+    password: z.string({
         invalid_type_error: "A senha deve ser uma string.",
         required_error: "A senha é obrigatória."
     })
