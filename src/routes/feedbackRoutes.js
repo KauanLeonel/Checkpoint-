@@ -8,10 +8,10 @@ import uptadeFeedbackController from "../controllers/feedback/uptadeFeedbackCont
 const router = express.Router()
 
 
-router.get('/table', getFeedbackController)
-router.post('/create', createFeedbackController)
-router.patch('/edit/:id', changeFeedbackController)
-router.delete('/delete/:id', deleteFeedbackController)
+router.get('/', getFeedbackController)
+router.post('/', createFeedbackController)
+router.patch('/:id', changeFeedbackController)
+router.delete('/:id', deleteFeedbackController)
 router.put('/:id', uptadeFeedbackController)
 
 export default router

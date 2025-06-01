@@ -5,9 +5,9 @@ const prisma = new PrismaClient();
 
 export const kartValidator = (kart, partial = null) => {
     if(partial){
-        return propertySchema.partial(partial).safeParse(kart)
+        return kartSchema.partial(partial).safeParse(kart)
     }
-    return propertySchema.safeParse(kart)
+    return kartSchema.safeParse(kart)
 }
 
 export async function create(kart){

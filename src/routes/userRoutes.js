@@ -8,10 +8,10 @@ import uptadeUserController from "../controllers/user/uptadeUserController.js"
 const router = express.Router()
 
 
-router.get('/table', getUserController)
+router.get('/', getUserController)
 router.post('/', createUserController)
-router.patch('/edit/:id', changeUserController)
-router.delete('/delete/:id', deleteUserController)
+router.patch('/:id', changeUserController)
+router.delete('/:id', deleteUserController)
 router.put('/:id', uptadeUserController)
 
 export default router

@@ -17,9 +17,9 @@ const clientSchema = z.object({
 
 export const clientValidator = (client, partial = null) => {
     if(partial){
-        return propertySchema.partial(partial).safeParse(client)
+        return clientSchema.partial(partial).safeParse(client)
     }
-    return propertySchema.safeParse(client)
+    return clientSchema.safeParse(client)
 }
 
 export async function create(client){

@@ -45,22 +45,22 @@ const productSchema = z.object({
     })
 });
 
-export const productValidator = (product, partial = null) => {
+export const productValidator = (products, partial = null) => {
     if(partial){
-        return propertySchema.partial(partial).safeParse(product)
+        return productSchema.partial(partial).safeParse(products)
     }
-    return propertySchema.safeParse(product)
+    return productSchema.safeParse(products)
 }
 
-export async function create(product){
-    const result = await prisma.product.create({
-        data: product
+export async function create(products){
+    const result = await prisma.products.create({
+        data: products
     })
     return result
 }
 
 export async function remove(id){
-    const result = await prisma.product.delete({
+    const result = await prisma.products.delete({
         where: {
             id
         }
@@ -69,16 +69,16 @@ export async function remove(id){
 }
 
 export async function getList(){
-    const result = await prisma.product.findMany()
+    const result = await prisma.products.findMany()
     return result
 }
 
-export async function update(id, product){
-    const result = await prisma.product.update({
+export async function update(id, products){
+    const result = await prisma.products.update({
         where: {
             id
         },
-        data: product
+        data: products
     })
     return result
 }

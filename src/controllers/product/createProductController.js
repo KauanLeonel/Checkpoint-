@@ -3,7 +3,7 @@ export default async function createProductController(req, res) {
 
     const user = req.body;
 
-    const { success, error, data: productValited } = productValidator(product, { id: true })
+    const { success, error, data: productValited } = productValidator(products, { id: true })
 
     // Verifica se a validação falhou (success é false)
     if (!success) {

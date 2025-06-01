@@ -8,10 +8,10 @@ import uptadeRequestController from "../controllers/request/uptadeRequestControl
 const router = express.Router()
 
 
-router.get('/table', getRequestController)
-router.post('/create', createRequestController)
-router.patch('/edit/:id', changeRequestController)
-router.delete('/delete/:id', deleteRequestController)
+router.get('/', getRequestController)
+router.post('/', createRequestController)
+router.patch('/:id', changeRequestController)
+router.delete('/:id', deleteRequestController)
 router.put('/:id', uptadeRequestController)
 
 export default router

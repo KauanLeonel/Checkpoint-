@@ -8,10 +8,10 @@ import uptadeKartController from "../controllers/kart/uptadeKartController.js"
 const router = express.Router()
 
 
-router.get('/table', getKartController)
-router.post('/create', createKartController)
-router.patch('/edit/:id', changeKartController)
-router.delete('/delete/:id', deleteKartController)
+router.get('/', getKartController)
+router.post('/', createKartController)
+router.patch('/:id', changeKartController)
+router.delete('/:id', deleteKartController)
 router.put('/:id', uptadeKartController)
 
 export default router

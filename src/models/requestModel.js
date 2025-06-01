@@ -13,9 +13,9 @@ const requestSchema = z.object({
 
 export const requestValidator = (request, partial = null) => {
     if(partial){
-        return propertySchema.partial(partial).safeParse(request)
+        return requestSchema.partial(partial).safeParse(request)
     }
-    return propertySchema.safeParse(request)
+    return requestSchema.safeParse(request)
 }
 
 export async function create(request){

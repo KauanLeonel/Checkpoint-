@@ -8,10 +8,10 @@ import uptadeCompanyController from "../controllers/company/uptadeCompanyControl
 const router = express.Router()
 
 
-router.get('/table', getCompanyController)
-router.post('/create', createCompanyController)
-router.patch('/edit/:id', changeCompanyController)
-router.delete('/delete/:id', deleteCompanyController)
+router.get('/', getCompanyController)
+router.post('/', createCompanyController)
+router.patch('/:id', changeCompanyController)
+router.delete('/:id', deleteCompanyController)
 router.put('/:id', uptadeCompanyController)
 
 export default router

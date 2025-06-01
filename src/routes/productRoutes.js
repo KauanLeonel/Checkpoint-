@@ -8,10 +8,10 @@ import uptadeProductController from "../controllers/product/uptadeProductControl
 const router = express.Router()
 
 
-router.get('/table', getProductController)
-router.post('/create', createProductController)
-router.patch('/edit/:id', changeProductController)
-router.delete('/delete/:id', deleteProductController)
+router.get('/', getProductController)
+router.post('/', createProductController)
+router.patch('/:id', changeProductController)
+router.delete('/:id', deleteProductController)
 router.put('/:id', uptadeProductController)
 
 export default router

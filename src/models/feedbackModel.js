@@ -17,9 +17,9 @@ const feedbackSchema = z.object({
 
 export const feedbackValidator = (feedback, partial = null) => {
     if (partial) {
-        return propertySchema.partial(partial).safeParse(feedback)
+        return feedbackSchema.partial(partial).safeParse(feedback)
     }
-    return propertySchema.safeParse(feedback)
+    return feedbackSchema.safeParse(feedback)
 }
 
 export async function create(feedback) {

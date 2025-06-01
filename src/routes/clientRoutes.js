@@ -8,10 +8,10 @@ import uptadeClientController from "../controllers/client/uptadeClientController
 const router = express.Router()
 
 
-router.get('/table', getClientController)
-router.post('/create', createClientController)
-router.patch('/edit/:id', changeClientController)
-router.delete('/delete/:id', deleteClientController)
+router.get('/', getClientController)
+router.post('/', createClientController)
+router.patch('/:id', changeClientController)
+router.delete('/:id', deleteClientController)
 router.put('/:id', uptadeClientController)
 
 export default router
