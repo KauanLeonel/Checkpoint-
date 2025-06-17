@@ -24,6 +24,7 @@ app.use("/product", productRoutes)
 app.use("/request", requestRoutes)
 app.use("/user", userRoutes )
 
+
 //Porta do server
 app.listen(port, () =>{
     console.log("Porta rodando");

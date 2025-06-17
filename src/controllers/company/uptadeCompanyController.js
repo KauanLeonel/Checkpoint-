@@ -7,7 +7,7 @@ export default async function putCompanyController(req, res) {
     const result = await update(+id, company);
 
     return res.json({
-        message: "Usuário alterado com sucesso", 
+        message: "Empresa alterado com sucesso", 
         request:{
             name: "Teste",
         email: "Teste@gmail.com",

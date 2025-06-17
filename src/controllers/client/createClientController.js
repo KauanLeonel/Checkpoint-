@@ -9,7 +9,7 @@ export default async function createClientController(req, res) {
     if (!success) {
         // Retorna uma resposta HTTP 400 (Bad Request) com uma mensagem de erro e os erros detalhados por campo
         return res.status(400).json({
-            message: 'Erro ao cadastrar a propriedade', // Mensagem geral do erro
+            message: 'Erro ao cadastrar a cliente', // Mensagem geral do erro
             errors: error.flatten().fieldErrors          // Lista de erros por campo (formato do Zod)
         })
     }
@@ -18,7 +18,7 @@ export default async function createClientController(req, res) {
 
 
     return res.json({
-        message: "imóvel criado com sucesso",
+        message: "Cliente criado com sucesso",
         client: result
     }
     )

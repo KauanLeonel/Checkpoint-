@@ -10,14 +10,14 @@ export default async function createUserController(req, res) {
     if (!success) {
         // Retorna uma resposta HTTP 400 (Bad Request) com uma mensagem de erro e os erros detalhados por campo
         return res.status(400).json({
-            message: 'Erro ao cadastrar a propriedade', // Mensagem geral do erro
+            message: 'Erro ao cadastrar a usuário', // Mensagem geral do erro
             errors: error.flatten().fieldErrors          // Lista de erros por campo (formato do Zod)
         })
     }
 
     const result = await create(userValited)
     return res.json({
-        message: "imóvel criado com sucesso",
+        message: "Usuário criado com sucesso",
         user: result
     }
     )

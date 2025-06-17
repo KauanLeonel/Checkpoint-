@@ -7,7 +7,7 @@ export default async function putClientController(req, res) {
     const result = await update(+id, client);
 
     return res.json({
-        message: "Usuário alterado com sucesso", 
+        message: "Cliente alterado com sucesso", 
         request:{
             name: "Teste",
         email: "Teste@gmail.com",

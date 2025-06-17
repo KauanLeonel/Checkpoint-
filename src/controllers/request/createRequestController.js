@@ -1,25 +1,30 @@
 import { create, requestValidator } from "../../models/requestModel.js";
+
 export default async function createRequestController(req, res) {
 
     const user = req.body;
 
-    const { success, error, data: requestValited } = requestValidator(request, { id: true })
+    const { success, error, data: requestValited } = requestValidator(user, { id: true });
 
     // Verifica se a validação falhou (success é false)
     if (!success) {
-        // Retorna uma resposta HTTP 400 (Bad Request) com uma mensagem de erro e os erros detalhados por campo
         return res.status(400).json({
-            message: 'Erro ao cadastrar a propriedade', // Mensagem geral do erro
-            errors: error.flatten().fieldErrors          // Lista de erros por campo (formato do Zod)
-        })
+            message: 'Erro ao cadastrar o pedido',
+            errors: error.flatten().fieldErrors
+        });
     }
 
-    const result = await create(requestValited)
+    try {
+        const result = await create(requestValited);
 
-
-    return res.json({
-        message: "imóvel criado com sucesso",
-        user: result
+        return res.status(201).json({
+            message: "Pedido criado com sucesso",
+            user: result
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: "Erro no servidor ao criar pedido",
+            error: err.message
+        });
     }
-    )
 }

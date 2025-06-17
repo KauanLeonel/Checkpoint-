@@ -8,7 +8,12 @@ const requestSchema = z.object({
         required_error: "A quantidade é obrigatória."
     })
     .int({ message: "A quantidade deve ser um número inteiro." })
-    .positive({ message: "A quantidade deve ser maior que zero." })
+    .positive({ message: "A quantidade deve ser maior que zero." }),
+
+    user_id: z.number({
+        required_error: "O ID do usuário é obrigatório."
+    })
+    .int({ message: "O ID do usuário deve ser um número inteiro." })
 });
 
 export const requestValidator = (request, partial = null) => {
@@ -20,7 +25,10 @@ export const requestValidator = (request, partial = null) => {
 
 export async function create(request){
     const result = await prisma.request.create({
-        data: request
+        data: {
+            quant_request: request.quant_request,
+            user_id: request.user_id
+        }
     })
     return result
 }
@@ -39,12 +47,12 @@ export async function getList(){
     return result
 }
 
-export async function update(id, request){
+export async function update(id, request) {
     const result = await prisma.request.update({
-        where: {
-            id
-        },
-        data: request
-    })
-    return result
+        where: { id },
+        data: {
+            quant_request: request.quant_request
+        }
+    });
+    return result;
 }
