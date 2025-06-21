@@ -5,154 +5,134 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 
-// PARA O MONGO DB
-// generator client {
-//   provider = "prisma-client-js"
-// }
-
-// datasource db {
-//   provider = "mongodb"
-//   url      = env("DATABASE_URL")
-// }
-
-// enum Role{
-//   USER
-//   ADMIN
-// }
-
-// model User{
-//   id      String   @id @default(auto()) @map("_id") @db.ObjectId //especifico para o mongodb
-//   email   String   @unique
-//   name    String
-//   role    Role     @default(USER)
-//   password String //vamos usar a biblioteca bcrypt para que ao receber a senha criptografe com "hashedPassword"bcrypt.compare()
-// }
-// model Client {
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String @db.ObjectId
-//   cpf     String @unique
-// }
-// model Company {
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String  @db.ObjectId
-//   cnpj    Int  @unique
-// }
-// model Products {
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String  @db.ObjectId
-//   name    String
-//   photo   String
-//   description   String
-//   price   Float
-//   category_game  String
-//   platform    String
-//   quant_stock Int
-// }
-
-// model Request{
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String  @db.ObjectId
-//   quant_request Int
-// }
-
-// model Kart{
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String  @db.ObjectId
-//   product_id String  @db.ObjectId
-// }
-
-// model Feedback{
-//   id      String  @id @default(auto()) @map("_id") @db.ObjectId
-//   user_id String  @db.ObjectId
-//   comment String
-//   stars_avaliation Int 
-// }
-
-
-// PARA O MYSQL
-
+//PARA O MONGO DB
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-enum Role {
+enum Role{
   USER
   ADMIN
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String
-  role      Role     @default(USER)
-  password  String
-
-  clients   Client[]
-  companies Company[]
-  products  Products[]
-  requests  Request[]
-  karts     Kart[]
-  feedbacks Feedback[]
+model User{
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId //especifico para o mongodb
+  email   String   @unique
+  name    String
+  role    Role     @default(USER)
+  password String //vamos usar a biblioteca bcrypt para que ao receber a senha criptografe com "hashedPassword"bcrypt.compare()
+  avatar   String?
 }
-
 model Client {
-  id      Int    @id @default(autoincrement())
-  user_id Int
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String @db.ObjectId
   cpf     String @unique
-
-  user    User   @relation(fields: [user_id], references: [id])
 }
-
 model Company {
-  id      Int    @id @default(autoincrement())
-  user_id Int
-  cnpj    String @unique
-
-  user    User   @relation(fields: [user_id], references: [id])
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  cnpj    String  @unique
 }
-
 model Products {
-  id            Int    @id @default(autoincrement())
-  user_id       Int
-  name          String
-  photo         String
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  name    String
+  photo   String
   description   String
-  price         Float
-  category_game String
-  platform      String
-  quant_stock   Int
-
-  user          User   @relation(fields: [user_id], references: [id])
-  karts         Kart[]
+  price   Float
+  category_game  String
+  platform    String
+  quant_stock Int
 }
 
-model Request {
-  id            Int    @id @default(autoincrement())
-  user_id       Int
+model Request{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
   quant_request Int
-
-  user          User   @relation(fields: [user_id], references: [id])
 }
 
-model Kart {
-  id         Int      @id @default(autoincrement())
-  user_id    Int
-  product_id Int
-
-  user       User     @relation(fields: [user_id], references: [id])
-  product    Products @relation(fields: [product_id], references: [id])
+model Kart{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  product_id String  @db.ObjectId
 }
 
-model Feedback {
-  id               Int    @id @default(autoincrement())
-  user_id          Int
-  comment          String
-  stars_avaliation Int
-
-  user             User   @relation(fields: [user_id], references: [id])
+model Feedback{
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String  @db.ObjectId
+  comment String
+  stars_avaliation Int 
 }
+
+
+// MYSQL sem chaves estrangeiras:
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+
+// enum Role {
+//   USER
+//   ADMIN
+// }
+
+// model User {
+//   id       Int    @id @default(autoincrement())
+//   email    String @unique
+//   name     String
+//   role     Role   @default(USER)
+//   password String
+// }
+
+// model Client {
+//   id      Int    @id @default(autoincrement())
+//   user_id Int    // apenas referência numérica, sem chave estrangeira
+//   cpf     String @unique
+// }
+
+// model Company {
+//   id      Int    @id @default(autoincrement())
+//   user_id Int
+//   cnpj    String @unique
+// }
+
+// model Products {
+//   id            Int    @id @default(autoincrement())
+//   user_id       Int    // dono do produto (ex: empresa)
+//   name          String
+//   photo         String
+//   description   String
+//   price         Float
+//   category_game String
+//   platform      String
+//   quant_stock   Int
+// }
+
+// model Request {
+//   id            Int    @id @default(autoincrement())
+//   user_id       Int
+//   quant_request Int
+// }
+
+// model Kart {
+//   id         Int @id @default(autoincrement())
+//   user_id    Int
+//   product_id Int
+// }
+
+// model Feedback {
+//   id               Int    @id @default(autoincrement())
+//   user_id          Int
+//   comment          String
+//   stars_avaliation Int
+// }

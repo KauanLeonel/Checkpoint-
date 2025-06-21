@@ -4,7 +4,7 @@ import { z } from 'zod'
 const prisma = new PrismaClient();
 
 const productSchema = z.object({
-    user_id: z.number({
+    user_id: z.string({
         invalid_type_error: "O ID do usuário deve ser um número.",
         required_error: "O ID do usuário é obrigatório."
       }),

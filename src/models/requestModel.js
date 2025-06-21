@@ -10,10 +10,10 @@ const requestSchema = z.object({
     .int({ message: "A quantidade deve ser um número inteiro." })
     .positive({ message: "A quantidade deve ser maior que zero." }),
 
-    user_id: z.number({
+    user_id: z.string({
         required_error: "O ID do usuário é obrigatório."
     })
-    .int({ message: "O ID do usuário deve ser um número inteiro." })
+    
 });
 
 export const requestValidator = (request, partial = null) => {
