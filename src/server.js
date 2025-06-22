@@ -6,6 +6,7 @@ import kartRoutes from "./routes/kartRoutes.js"
 import productRoutes from "./routes/productRoutes.js"
 import requestRoutes from "./routes/requestRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
+import gerarPdfRoutes from "./routes/gerarPdfRoutes.js"
 import cors from 'cors'
 
 const app = express();
@@ -23,7 +24,7 @@ app.use("/kart", kartRoutes)
 app.use("/product", productRoutes)
 app.use("/request", requestRoutes)
 app.use("/user", userRoutes )
-
+app.use("/gerar-pdf", gerarPdfRoutes);
 
 //Porta do server
 app.listen(port, () =>{
