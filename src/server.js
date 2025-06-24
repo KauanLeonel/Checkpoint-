@@ -25,6 +25,7 @@ app.use("/product", productRoutes)
 app.use("/request", requestRoutes)
 app.use("/user", userRoutes )
 app.use("/gerar-pdf", gerarPdfRoutes);
+app.use(errorHandler)
 
 //Porta do server
 app.listen(port, () =>{
